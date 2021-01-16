@@ -1,0 +1,20 @@
+@import "variables";
+@import "mixins";
+
+body {
+    margin:1rem;
+}
+
+h1 {
+    @include up-to(medium) {
+        color: var(--PrimaryText);
+    }
+
+    @include up-from(medium) {
+        color: var(--Text);
+    }
+
+    @include up-from(large) {
+        color: var(--Background50);
+    }
+}

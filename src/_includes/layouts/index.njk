@@ -1,0 +1,14 @@
+{% set pageCriticalStyles = ['css/index.css'] %}
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<h1>{{title}}<h1>
+{% Image "images/default-social.jpg", "Sample image" %}
+
+{{content | safe}}
+{% endblock %}
+
+{% block footer %}
+   <span>Custom Footer Content</span>
+{% endblock %}
+

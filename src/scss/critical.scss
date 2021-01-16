@@ -1,0 +1,41 @@
+@import "reset";
+@import "variables";
+@import "mixins";
+@import "colors";
+
+
+html {
+    font-family: "Nunito", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+:root {
+    @include default-theme;
+    font-size: calc(1rem + 0.5vw);
+}
+
+/* Utilities */
+@import "./utils/visually-hidden";
+
+/* Components */
+@import "./components/header";
+
+body {
+    background: var(--Background);
+    color: var(--Text);
+
+}
+
+a {
+    color: var(--Primary)
+}
+
+.skip-link {
+    position: absolute;
+    top:0;
+    right:0;
+    z-index: 99;
+    margin-top:1.5rem;
+    &:not(:focus) {
+        @extend .visually-hidden;
+    }
+}

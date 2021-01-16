@@ -1,0 +1,13 @@
+{
+    "title": "my-site.com",
+    "url": "https://my-site.com",
+    "description": "Whatis your site",
+    "author": {
+      "name": "Your Name",
+      "email": "Your email",
+      "url": "https://my-site.com/about",
+      "twitter": "@you",
+      "twitter_url": "https://twitter.com/intent/follow?screen_name=you"
+    }
+  }
+  

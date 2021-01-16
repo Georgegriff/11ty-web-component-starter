@@ -1,0 +1,12 @@
+@mixin  default-theme {
+    --Background: #{$bg};
+    --Background50: #{$bg-50};
+    --Secondary: #{$secondary};
+    --Primary: #{$primary};
+    --PrimaryText: #{$primary};
+    --ActionColor: var(--Background);
+    --Primary50: #{$primary-50};
+    --Text: #{$text};
+    --Text50: #{$text-50};
+    --Highlight: #{$highlight};
+}
