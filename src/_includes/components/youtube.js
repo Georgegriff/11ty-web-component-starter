@@ -1,8 +1,9 @@
 const html = String.raw;
 
 const youtube = ({id}) => html`<div class="video-size">
+    <!-- To pause: iframe.contentWindow.postMessage(window.JSON.stringify( { event: 'command', func: 'stopVideo' } ), 'https://www.youtube-nocookie.com') -->
     <div class="video-wrapper">
-        <lite-youtube class="video" videoid="${id}" style="background-image: url('https://i.ytimg.com/vi/${id}/hqdefault.jpg');">
+        <lite-youtube class="video" params="enablejsapi=1" videoid="${id}" style="background-image: url('https://i.ytimg.com/vi/${id}/hqdefault.jpg');">
             <a rel="noopener" onclick="('customElements' in window) && event.preventDefault()" title="Play Video" class="no-js" target="_blank" href="https://youtube.com?w=${id}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                 <g transform="translate(-339 -150.484)">
