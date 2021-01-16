@@ -5,16 +5,10 @@ body {
     margin:1rem;
 }
 
-h1 {
-    @include up-to(medium) {
-        color: var(--PrimaryText);
-    }
-
-    @include up-from(medium) {
-        color: var(--Text);
-    }
-
-    @include up-from(large) {
-        color: var(--Background50);
-    }
+img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: inline-block;
+    min-height: 270px;
 }

@@ -1,0 +1,19 @@
+nav {
+    a {
+        text-decoration: none;
+    }
+    .active {
+        a {
+            color: var(--Primary);
+        }
+    }
+    ul {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+    }
+
+    li {
+        margin: 0 0.5rem;
+    }
+}

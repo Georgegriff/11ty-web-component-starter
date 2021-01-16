@@ -8,7 +8,6 @@ const sharp = require('sharp');
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
 const { minify } = require("terser");
 
 const siteMeta = require("./src/_data/metadata.json");
@@ -31,12 +30,7 @@ module.exports = (eleventyConfig) => {
       outputDir: "./dist/images/",
     });
 
-    try {
-      dimensions = await sizeOf(imgPath);
-    } catch (e) {
-      console.warn(e.message, src);
-      return;
-    }
+    dimensions = await sizeOf(imgPath);
 
     let lowestSrc = stats["jpeg"][0];
     const srcset = Object.keys(stats).reduce(
@@ -57,22 +51,29 @@ module.exports = (eleventyConfig) => {
         "base64"
       )}`;
       const source = `<source type="image/webp" data-srcset="${srcset["webp"]}" >`;
-
-      const placeholderStyle = `background-size:cover;background-image:url("${base64Placeholder}");`
+      const containSize = `min(var(--main-width), ${
+        dimensions.width
+      }px) min(calc(var(--main-width) * ${
+        dimensions.height / dimensions.width
+      }), ${dimensions.height}px)`;
+      const placeholderStyle = `background-size:cover;background-image:url('${base64Placeholder}');contain-intrinsic-size:${containSize}`
 
       const img = `<img
-        class="lazy"
-        alt="${alt}"
         src="${lowestSrc.url}"
-        style=${placeholderStyle}
-        sizes='(min-width: 1024px) 1024px, 100vw'
-        srcset="${srcset["jpeg"]}"
         width="${dimensions.width}"
-        height="${dimensions.height}">`;
+        height="${dimensions.height}" 
+        decoding="async"
+        loading="lazy"
+        alt="${alt}"
+        sizes="(min-width: 1024px) 1024px, 100vw"
+        srcset="${srcset["jpeg"]}"
+        style="${placeholderStyle}"
+        />`;
     return `<picture> ${source} ${img} </picture>`
   }
 
-  eleventyConfig.addNunjucksAsyncShortcode("Image", async (src, alt) => {
+
+  eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt) => {
     if (!alt) {
       throw new Error(`Missing accessibility description on image on ${src}`);
     }

@@ -1,7 +1,7 @@
 const {dest, src} = require('gulp');
 const GetGoogleFonts = require('get-google-fonts');
 
-const font = 'https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap';
+const font = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap';
 
 const fonts = async () => {
   // Setup of the library instance by setting where we want

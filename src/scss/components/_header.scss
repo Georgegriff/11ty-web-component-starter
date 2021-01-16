@@ -1,3 +1,13 @@
-h1 {
-    color: var(--Text);
+h2 {
+    @include up-to(medium) {
+        color: var(--PrimaryText);
+    }
+
+    @include up-from(medium) {
+        color: var(--Text);
+    }
+
+    @include up-from(large) {
+        color: var(--Background50);
+    }
 }

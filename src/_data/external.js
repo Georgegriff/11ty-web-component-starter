@@ -22,8 +22,7 @@ module.exports = {
   links: [
     {
       text: "Twitter",
-      url:  siteMeta.author.twitter_url,
-      icon: "img/twitter.svg",
+      url:  siteMeta.author.twitter_url
     }
   ],
   genericShare,
